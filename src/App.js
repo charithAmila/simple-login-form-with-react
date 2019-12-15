@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
+import { checkAuthenticated } from "./action-creators/auth";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(checkAuthenticated());
+  }
+  render() {
+    const { children } = this.props;
+    return <Fragment>{children}</Fragment>;
+  }
 }
 
-export default App;
+const mapStateToProps = () => {
+  return {};
+};
+export default connect(mapStateToProps)(App);
