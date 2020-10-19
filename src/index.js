@@ -12,7 +12,7 @@ import Signup from "./pages/signup";
 ReactDOM.render(
   <Provider store={store}>
     <App>
-      <Router>
+      <Router basename="/v1.0.0">
         <Route path="/" exact component={Home} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
